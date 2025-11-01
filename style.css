@@ -2,50 +2,53 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
-html, body {
-  width: 100%;
+body, html {
   height: 100%;
   overflow-x: hidden;
 }
 
-/* ===== VIDEO SECTION ===== */
+/* ==== BANNER ==== */
 .banner {
   position: relative;
   width: 100%;
-  height: 92vh;
+  height: 100vh;
   overflow: hidden;
 }
 
+/* Background video */
 .banner video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  z-index: -2;
+}
+
+/* Overlay for darker effect */
+.overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  z-index: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: -1;
 }
 
-/* ===== OVERLAY SECTION ===== */
-.overlay {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35));
-  display: flex;
-  flex-direction: column;
-}
-
-/* ===== NAVBAR ===== */
+/* ==== NAVBAR ==== */
 .navbar {
+  width: 90%;
+  margin: 0 auto;
+  padding: 20px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 25px 5%;
 }
 
 .logo {
@@ -54,122 +57,104 @@ html, body {
 }
 
 .navbar ul {
-  list-style: none;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-}
-
-.navbar ul li {
-  margin: 0 10px;
+  gap: 20px;
+  list-style: none;
 }
 
 .navbar ul li a {
   text-decoration: none;
   text-transform: uppercase;
-  color: white;
+  color: #fff;
   font-weight: 600;
-  font-size: 0.95rem;
+  padding: 8px 15px;
   transition: 0.3s;
 }
 
 .navbar ul li a:hover {
-  color: #a7e9af;
+  background: #fff;
+  color: #000;
+  border-radius: 20px;
 }
 
-/* ===== CONTENT ===== */
+/* ==== CONTENT ==== */
 .content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
   text-align: center;
-  padding: 0 20px;
-  color: white;
+  color: #fff;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 800px;
+  padding: 0 10px;
 }
 
 .content h1 {
-  font-size: clamp(2rem, 6vw, 5rem);
+  font-size: 4rem;
   font-weight: 800;
-  margin-bottom: 25px;
   line-height: 1.2;
 }
 
 button {
-  background: white;
+  margin-top: 25px;
+  padding: 14px 35px;
   border: none;
-  padding: 15px 40px;
   border-radius: 30px;
-  font-size: 1rem;
+  font-size: 1.2rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: 0.3s;
+  background: #fff;
+  color: #000;
+  transition: 0.4s;
 }
 
 button:hover {
-  background: #a7e9af;
-  color: white;
+  background: #4caf50;
+  color: #fff;
 }
 
-/* ===== BOTTOM BAR ===== */
+/* ==== BOTTOM BAR ==== */
 .bottom-bar {
   height: 8vh;
-  background-color: #386641;
+  background: #386641;
   display: flex;
   justify-content: center;
   align-items: center;
   color: white;
-  font-size: clamp(0.8rem, 1.5vw, 1.1rem);
+  font-weight: 500;
+  font-size: 1rem;
   text-align: center;
   padding: 0 10px;
 }
 
-/* ===== MOBILE FIXES ===== */
+/* ==== RESPONSIVE ==== */
 @media (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-    gap: 10px;
+  .content h1 {
+    font-size: 2.5rem;
   }
 
   .navbar ul {
-    justify-content: center;
-    flex-wrap: wrap;
+    display: none; /* Hide menu for simplicity */
   }
 
-  .navbar ul li {
-    margin: 5px;
-  }
-
-  .content h1 {
-    font-size: clamp(1.8rem, 8vw, 3rem);
+  .logo {
+    width: 110px;
   }
 
   button {
-    padding: 12px 25px;
-    font-size: 0.9rem;
-  }
-
-  .bottom-bar {
-    height: auto;
-    padding: 10px;
+    font-size: 1rem;
+    padding: 12px 28px;
   }
 }
 
 @media (max-width: 480px) {
-  .logo {
-    width: 120px;
-  }
-
-  .navbar ul li a {
-    font-size: 0.85rem;
-  }
-
   .content h1 {
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
 
   button {
-    width: 150px;
-    padding: 10px;
+    width: 100%;
+    max-width: 200px;
   }
 }
